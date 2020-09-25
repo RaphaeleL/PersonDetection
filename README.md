@@ -20,6 +20,7 @@ and the classes file (classes.names in the data folder) only contains the person
 
 * [Prerequisites](#prerequisites)
 * [Running](#running)
+* [Docker](#docker)
 * [Training](#training)
 * [Acknowledgments](#acknowledgments)
 
@@ -36,6 +37,9 @@ To run the demo, pass path to the pre-trained checkpoint and camera id (or path 
 python src/demo.py --model model/student-jetson-model.pth --video 0
 ```
 > Additional comment about the demo.
+
+## Docker
+HOW TO
 
 ## Training
 
@@ -56,8 +60,6 @@ I recommend yolov3-spp-ultralytics.pt for YOLOv3 and yolov3-tiny.pt for Tiny YOL
 
 **Plot Training:** `from utils import utils; utils.plot_results()`
 
-## Docker
-HOW TO
 
 ## Acknowledgments
 

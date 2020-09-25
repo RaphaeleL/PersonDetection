@@ -17,7 +17,7 @@ except:
     print('Apex recommended for faster mixed precision training: https://github.com/NVIDIA/apex')
     mixed_precision = False  # not installed
 
-wdir = 'weights' + os.sep  # weights dir
+weightDir = 'weights' + os.sep  # weights dir
 
 results_file = 'results.txt'
 
@@ -373,7 +373,7 @@ def train(hyp):
     n = opt.name
     if len(n):
         n = '_' + n if not n.isnumeric() else n
-        fresults, flast, fbest = 'results%s.txt' % n, wdir + 'last%s.pt' % n, wdir + 'best%s.pt' % n
+        fresults, flast, fbest = 'results%s.txt' % n, weightDir + 'last%s.pt' % n, weightDir + 'best%s.pt' % n
         for f1, f2 in zip([opt.last, opt.best, 'results.txt'], [flast, fbest, fresults]):
             if os.path.exists(f1):
                 os.rename(f1, f2)  # rename
@@ -393,7 +393,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--epochs', type=int, default=300)  # 500200 batches at bs 16, 117263 COCO images = 273 epochs
     parser.add_argument('--batch-size', type=int, default=8)  # effective bs = batch_size * accumulate = 16 * 4 = 64
-    parser.add_argument('--cfg', type=str, default='cfg/yolov3-tiny.cfg', help='*.cfg path')
+    parser.add_argument('--cfg', type=str, default='', help='*configuration (.cfg) path')
     parser.add_argument('--data', type=str, default='data/training.data', help='*.data path')
     parser.add_argument('--multi-scale', action='store_true', help='adjust (67%% - 150%%) img_size every 10 batches')
     parser.add_argument('--img-size', nargs='+', type=int, default=[320, 1280, 640], help='[min_train, max-train, test]')
@@ -413,12 +413,19 @@ if __name__ == '__main__':
     parser.add_argument('--tiny', action='store_true', help='train tiny, otherwise train normal')
     opt = parser.parse_args()
 	
-	#tiny or normal net
+	#load configuration
+    if opt.cfg:
+        opt.cfg = check_file(opt.cfg)
+    elif opt.tiny:
+        opt.cfg = check_file('cfg/yolov3-tiny.cfg')
+    else:
+        opt.cfg = check_file('cfg/yolov3-spp.cfg')
+	
+
+	# change name of checkpoint and result weight based on if we are training tiny or not
     if opt.tiny:
-        opt.last = wdir + 'last_tiny.pt'
-        opt.best = wdir + 'best_tiny.pt'
-		
-    opt.cfg = check_file('cfg/yolov3-tiny.cfg') if opt.tiny else check_file('cfg/yolov3-spp.cfg')
+        opt.last = weightDir + 'last_tiny.pt'
+        opt.best = weightDir + 'best_tiny.pt'
 	
     opt.weights = opt.last if opt.resume else opt.weights
 	
