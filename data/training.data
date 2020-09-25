@@ -1,0 +1,4 @@
+classes=1
+train=data/train_colab.txt
+valid=data/test_colab.txt
+names=data/classes.names
