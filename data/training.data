@@ -1,4 +1,4 @@
 classes=1
-train=data/train_colab.txt
-valid=data/test_colab.txt
+train=data/train.txt
+valid=data/test.txt
 names=data/classes.names
