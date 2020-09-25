@@ -29,7 +29,7 @@ and the classes file (classes.names in the data folder) only contains the person
 pip install -r requirements.txt
 ```
 
-## Custom Training
+## Training
 
 **Prepare Training** TODO
 
