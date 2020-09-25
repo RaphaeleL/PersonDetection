@@ -15,6 +15,13 @@ $ pip install -r requirements.txt
 
 **Prepare Training** TODO
 
+** Pretrained Checkpoints
+
+Download from: [https://drive.google.com/open?id=1LezFG5g3BCW6iYaV89B2i64cqEUZD7e0](https://drive.google.com/open?id=1LezFG5g3BCW6iYaV89B2i64cqEUZD7e0)
+
+I recommend yolov3-spp-ultralytics.pt for YOLOv3 and yolov3-tiny.pt for Tiny YOLOv3
+
+
 **Start Training:** `python3 train.py` to begin training after perparing training and validation data
 
 **Resume Training:** `python3 train.py --resume` to resume training from `weights/last.pt` (or `weights/last_tiny.pt` if --tiny is set).
