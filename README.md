@@ -20,7 +20,7 @@ and the classes file (classes.names in the data folder) only contains the person
 
 * [Prerequisites](#prerequisites)
 * [Running](#running)
-* [Custom Training](#custom training)
+* [Training](#training)
 * [Acknowledgments](#acknowledgments)
 
 ## Prerequisites
