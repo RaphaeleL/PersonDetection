@@ -1,3 +1,13 @@
+# OWN
+**/.*.swp
+**/__pycache
+**/.DS_Store
+Detect/output/
+Detect/original_cropped_valid/image_valid/
+#Train/data/images/*
+#Train/weights/yolov3-spp-ultralytics.pt
+#Train/runs
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
