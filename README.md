@@ -106,17 +106,17 @@ But before you start we want to mention that we created two small Python3 script
 The first one is `index.py`. It takes all the image files in data/images/train and data/images/valid and creates the necessaey image lists train.txt and valid.txt
 
 ```bash
-$ python index.py
+$ python3 index.py
 ```
 
 The second is `annos_converter.py`. For our Project we got a PANDA Dataset for which all the the Bounding Boxes for all objects and images were saved in a single big json file.
 We created a small script to put all the Bounding Boxes for each image (in given path --image_path) into seperate files in the format necessary for `train.py`
 We also change the formats of the panda coordinates (x_topLeft y_topLeft, x_bottomRight, y_bottomRight) to the darknet format (x_centter, y_center, width, height)
-Since in our case we needed the bounding boxes "visible body" of persons the code is hardcoded to look for those bounding boxes. 
+Since in our case we needed the bounding boxes "visible body" of persons this part is hardcoded to look for those bounding boxes. 
 If you need to detect different objects you probably have to adjust the script.
 
 ```bash
-$ python annos_converter.py --annos_path data/image_annos/person_bbox_valid.json --images_path data/images/image_valid/*.jpg
+$ python3 annos_converter.py --annos_path data/image_annos/person_bbox_valid.json --images_path data/images/image_valid/*.jpg
 ```
 
 
