@@ -11,9 +11,9 @@ Short introduction to project assigment.
 
 This repo contains inference and training code for YOLOv3 and Tiny Yolov3 in PyTorch based on the Repository of Ultralytics https://github.com/ultralytics/yolov3
 
-This code is adjusted to projects case in which we had to detect a large number of persons on images and videos
-This means the configurations of Yolov3 (the files in the cfg folder) are adjusted to only use one class of objects 
-and the classes file (classes.names in the data folder) only contains the person.class
+This code is adjusted to the projects case in which we had to detect a large number of persons on images and videos
+This means the configurations of YOLOv3 (the files in the cfg folder) are adjusted to only use one class of objects
+and the classes file (classes.names in the data folder) only contains the person class
 
 
 ## Table of Contents
@@ -43,7 +43,7 @@ HOW TO
 
 ## Training
 
-**Prepare Training** TODO
+**Prepare Training**
 
 ** Pretrained Weights
 
@@ -52,25 +52,42 @@ Some of those weights already have many weeks of training behind them and will d
 
 For YoloV3 yolov3-spp-ultralytics.pt is a really well trained weight file and yolov3-tiny.pt for Tiny YOLOv3
 
-By the way: pt stands for pytorch. With our code you can also use .weights file but we decided to use Pytorch instead of Darknet, so we rather use pt files and also save the resulting weights as pt files. 
-
 Download from: [https://drive.google.com/open?id=1LezFG5g3BCW6iYaV89B2i64cqEUZD7e0](https://drive.google.com/open?id=1LezFG5g3BCW6iYaV89B2i64cqEUZD7e0)
+
+> By the way: pt stands for pytorch. With our code you can also use .weights file but we decided to use Pytorch instead of Darknet, so we rather use pt files and also save the resulting weights as pt files. 
+
 
 ** Prepare your Custom Data
 
 For this you should do the 7 steps in the chapter "Train On Custom Data" of the following wiki page. 
+But before you start we want to mention that we created two small scripts to make some of the steps easier. 
+The first one is `create_image_list.py`. It takes paths to files  as well as the resulting filename as arguments and lists all the found files.
+e.g.
+```
+python create_image_list.py --images_path data\images\image_train\*.jpg --file_name data\train.txt
+```
 
 https://github.com/ultralytics/yolov3/wiki/Train-Custom-Data
 
-**Start Training:** `python3 train.py --cfg <your_cfg_path> --weight <pretrained_weight_path>` to begin training after perparing training and validation data
+**Start Training:** 
+To begin training after preparing training and validation data
+```
+python3 train.py --cfg <your_cfg_path> --weight <pretrained_weight_path>` 
+```
+
 
 default cfg is cfg/yolov3-spp.cfg (or cfg/yolov3-tiny.cfg if --tiny is set) so if you just adjusted this cfg to your requirements then you don't have to add --cfg
 
-**Resume Training:** `python3 train.py --resume --cfg <your_cfg_path>` to resume training from `weights/last.pt` (or `weights/last_tiny.pt` if --tiny is set).
+**Resume Training:** 
+to resume training from `weights/last.pt` (or `weights/last_tiny.pt` if --tiny is set).
+```
+python3 train.py --resume --cfg <your_cfg_path>`
+```
+
 
 again default cfg is cfg/yolov3-spp.cfg (or cfg/yolov3-tiny.cfg if --tiny is set)
 
-In those Pytorch files the number of epoches run and the currently best evaluation is also saved, so if for some reason the training is stopped, 
+>In those Pytorch files the number of epoches run and the currently best evaluation is also saved, so if for some reason the training is stopped, 
 you can easily continue from where the training left of with --resume. 
 
 **Results** after each epoch last.pt (or last_tiny.pt) will be updated and if the evaluation of the current neural net is the best best.pt will be overwritten.
@@ -86,7 +103,7 @@ If you want to learn how the object detection is evaluated we recommend taking a
 ## Acknowledgments
 
 This repo is based on
-  - [Ultralytics](https://github.com/ultralytics/yolov3)
+  - [Ultralytics YOlOv3](https://github.com/ultralytics/yolov3)
  
 Thanks to the original authors for their work!
 
