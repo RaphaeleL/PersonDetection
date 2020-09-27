@@ -103,11 +103,22 @@ For YoloV3 `yolov3-spp-ultralytics.pt` is a really well trained weight file and 
 
 For this you should do the 7 steps in the chapter [Train On Custom Data](https://github.com/ultralytics/yolov3/wiki/Train-Custom-Data). 
 But before you start we want to mention that we created two small Python3 scripts to make some of the steps easier. 
-The first one is `create_image_list.py`. It takes paths to files  as well as the resulting filename as arguments and lists all the found files. 
+The first one is `index.py`. It takes all the image files in data/images/train and data/images/valid and creates the necessaey image lists train.txt and valid.txt
 
 ```bash
-$ python create_image_list.py --images_path data\images\image_train\*.jpg --file_name data\train.txt
+$ python index.py
 ```
+
+The second is `annos_converter.py`. For our Project we got a PANDA Dataset for which all the the Bounding Boxes for all objects and images were saved in a single big json file.
+We created a small script to put all the Bounding Boxes for each image (in given path --image_path) into seperate files in the format necessary for `train.py`
+We also change the formats of the panda coordinates (x_topLeft y_topLeft, x_bottomRight, y_bottomRight) to the darknet format (x_centter, y_center, width, height)
+Since in our case we needed the bounding boxes "visible body" of persons the code is hardcoded to look for those bounding boxes. 
+If you need to detect different objects you probably have to adjust the script.
+
+```bash
+$ python annos_converter.py --annos_path data/image_annos/person_bbox_valid.json --images_path data/images/image_valid/*.jpg
+```
+
 
 **Start Training:** 
 
@@ -118,6 +129,12 @@ $ python3 train.py --cfg <your_cfg_path> --weight <pretrained_weight_path>
 ```
 
 The default config is `cfg/yolov3-spp.cfg` (or `cfg/yolov3-tiny.cfg` if `--tiny` is set) so if you just adjusted this config to your requirements then you don't have to add `--cfg`.
+Check the arguments of train.py to adjust it to your requirements
+e.g. change img_size and add multi-scale to do you training in different image sizes practical to object detection in which the objects have a lot of different sizes
+
+```bash
+$ python3 train.py --cfg <your_cfg_path> --weight <pretrained_weight_path> --img_size [320, 1280, 640] --multi-scale
+```
 
 **Resume Training:** 
 
@@ -125,6 +142,7 @@ to resume training from `weights/last.pt` (or `weights/last_tiny.pt` if `--tiny`
 ```bash
 $ python3 train.py --resume --cfg <your_cfg_path>`
 ```
+don't forget to add your additional arguments here like img_size or multi-scale
 
 <p align="center">
   <img src="Detect/data/demo_images/train.jpeg"/>
