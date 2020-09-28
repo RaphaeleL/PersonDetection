@@ -13,7 +13,7 @@ def index():
     for pic_format in pic_formats:
         #Train
         with open(train_data, "a") as axlspd:
-            for f in glob.glob(r'data/images/train/**/*'+pic_format, recursive=True):
+            for f in glob.glob(r'../data/images/train/**/*'+pic_format, recursive=True):
                 fpath, fname = os.path.split(f)
                 rname, extname = os.path.splitext(fname)
                 dirtup = (f, rname)
