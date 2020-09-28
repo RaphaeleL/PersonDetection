@@ -3,7 +3,7 @@
 This Code is an YoloV3 Person Detection in PyTorch. It works on every common OS.
 
 <p align="center">
-  <img src="Detect/data/demo_images/image_2.jpg"/>
+  <img src="data/demo_images/image_2.jpg"/>
 </p>
 
 > This work was done by Christian Zanner (zach1011), Fernando Pastor Castro (pafe1011), Raphaele Salvatore Licciardo (lira1011) during the IW276 Autonome Systeme Labor at the Karlsruhe University of Applied Sciences (Hochschule Karlruhe - Technik und Wirtschaft) in WS 2020 / 2021. 
@@ -66,7 +66,7 @@ sudo docker run -it --rm --runtime nvidia --network host image_name_neu
 ### Detection
 
 <p align="center">
-  <img src="Detect/data/demo_images/image_1.jpg"/>
+  <img src="data/demo_images/image_1.jpg"/>
 </p>
 
 This part of the Project, doesn't need any big Changes. 
@@ -145,7 +145,7 @@ $ python3 train.py --resume --cfg <your_cfg_path>`
 don't forget to add your additional arguments here like img_size or multi-scale
 
 <p align="center">
-  <img src="Detect/data/demo_images/train.jpeg"/>
+  <img src="data/demo_images/train.jpg"/>
 </p>
 
 Again, the default config file is `cfg/yolov3-spp.cfg` (or `cfg/yolov3-tiny.cfg` if `--tiny` is set)
@@ -164,7 +164,7 @@ utils.plot_results()
 ```
 
 <p align="center">
-  <img src="Detect/data/demo_images/plot.jpeg"/>
+  <img src="data/demo_images/plot.jpg"/>
 </p>
 
 > The results of the plotting will be saved in a `results.png` file.
