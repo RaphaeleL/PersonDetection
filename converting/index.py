@@ -6,7 +6,6 @@ def index():
     pic_formats = ['.png', '.jpg', '.jpeg', '.tiff', '.bmp', '.tif', '.webp']
     num_train = 0
     num_valid = 0
-    num_all = 0
     open(train_data, "w")
     open(valid_data, "w")
 
@@ -29,7 +28,7 @@ def index():
                 axlspd.write(f+'\n')
                 num_valid+=1
         
-    print("Finished! Found: ", num_train, " train pictures, ", num_valid, " valid pictures, ", num_all, " pictures")
+    print("Finished! Found: ", num_train, " train pictures, ", num_valid, " valid pictures, ", (num_train+num_valid), " pictures")
 
 
 if __name__ == '__main__':
