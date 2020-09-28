@@ -820,8 +820,25 @@ def output_to_target(output, width, height):
 
     return np.array(targets)
 
+def get_avg_fps(fps):
+    new_fps = str(sum(fps)/len(fps)) if len(fps) > 0 else str(0.0)
+    print("(FPS: " + new_fps + ")", end="")
+    return new_fps
+    
+def get_avg_conf(conf):
+    new_conf = str((sum(conf)/len(conf)).tolist()) if len(conf) > 0 else str(0.0)
+    print("(CONF: " + new_conf + ")")
+    return new_conf
 
 # Plotting functions ---------------------------------------------------------------------------------------------------
+def plot_data(img, fps, conf):
+    image = cv2.imread("data/output/" + img.split("/")[-1])
+    tl = round(0.002 * (image.shape[0] + image.shape[1]) / 2) + 1
+    tf = max(tl - 1, 1)
+    cv2.putText(image, "FPS: " + get_avg_fps(fps), (20, 40), 0, tl / 3, [0, 0, 0], thickness=tf)
+    cv2.putText(image, "CONV: " + get_avg_conf(conf), (20, 100), 0, tl / 3, [0, 0, 0], thickness=tf)
+    cv2.imwrite("data/output/" + img.split("/")[-1], image)
+
 def plot_one_box(x, img, color=None, label=None, line_thickness=None):
     # Plots one bounding box on image img
     tl = line_thickness or round(0.002 * (img.shape[0] + img.shape[1]) / 2) + 1  # line/font thickness

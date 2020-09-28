@@ -1,7 +1,7 @@
 from PIL import Image, ImageFilter
 import glob
 
-images = glob.glob("/Users/raphaele/Desktop/Raf_KI/PANDA-Image/original_cropped_train/image_train/*.jpg")
+images = glob.glob("../data/images/valid/*.jpg")
 count = 1
 for image in images: 
     print(count)

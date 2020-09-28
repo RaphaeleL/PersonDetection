@@ -4,7 +4,7 @@ import torch
 
 def get_id(source, path):
     found = []
-    data = json.load(open("/Users/raphaele/Desktop/Raf_KI/PANDA-Image/original_cropped_valid/image_annos/valid_coco.json"))
+    data = json.load(open("<path_to_your_valid_coco.json"))
     #images = glob.glob(source + "/*.jpg")
     key = path.split("/")[-1]
     for item in data["images"]:

@@ -3,7 +3,7 @@ import json
 
 from torch.utils.data import DataLoader
 
-from models import *
+from model.models import *
 from utils.datasets import *
 from utils.utils import *
 

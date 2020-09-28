@@ -22,7 +22,7 @@ def index():
 
         #Valid
         with open(valid_data, "a") as axlspd:
-            for f in glob.glob(r'data/images/valid/**/*'+pic_format, recursive=True):
+            for f in glob.glob(r'../data/images/valid/**/*'+pic_format, recursive=True):
                 fpath, fname = os.path.split(f)
                 rname, extname = os.path.splitext(fname)
                 dirtup = (f, rname)
@@ -34,8 +34,8 @@ def index():
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--train', type=str, default='data/train.txt', help='*.txt file to index /data/images/train')
-    parser.add_argument('--valid', type=str, default='data/valid.txt', help='*.txt file to index /data/images/valid')
+    parser.add_argument('--train', type=str, default='../data/train.txt', help='*.txt file to index /data/images/train')
+    parser.add_argument('--valid', type=str, default='../data/valid.txt', help='*.txt file to index /data/images/valid')
     opt = parser.parse_args()
     print(opt)
     index()

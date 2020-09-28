@@ -1,12 +1,12 @@
 import argparse
 
-from make_json import *
+from converting.make_json import *
 from utils.datasets import *
 from utils.utils import *
 from utils.torch_utils import *
 
-from utils.darknet import *
-from utils.yolo import *
+from utils.layers import *
+from model.models import *
 
 fps_count_g = []
 bbox_list = []
@@ -156,11 +156,11 @@ def detect(save_img=False):
         
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--cfg', type=str, default='../config/cfg/yolov3-spp.cfg', help='*.cfg path')
-    parser.add_argument('--names', type=str, default='../config/data/coco.names', help='*.names path')
-    parser.add_argument('--weights', type=str, default='../config/weights/yolov3_last.pt', help='weights path')
-    parser.add_argument('--source', type=str, default='../data/original_cropped_valid/image_valid', help='source')  # input file/folder, 0 for webcam
-    parser.add_argument('--output', type=str, default='../data/output', help='output folder')  # output folder
+    parser.add_argument('--cfg', type=str, default='cfg/yolov3-spp.cfg', help='*.cfg path')
+    parser.add_argument('--names', type=str, default='data/classes.names', help='*.names path')
+    parser.add_argument('--weights', type=str, default='weights/yolov3_last.pt', help='weights path')
+    parser.add_argument('--source', type=str, default='data/images/valid', help='source')  # input file/folder, 0 for webcam
+    parser.add_argument('--output', type=str, default='data/output', help='output folder')  # output folder
     parser.add_argument('--img-size', type=int, default=512, help='inference size (pixels)')
     parser.add_argument('--conf-thres', type=float, default=0.075, help='object confidence threshold')
     parser.add_argument('--iou-thres', type=float, default=0.6, help='IOU threshold for NMS')
@@ -168,7 +168,7 @@ if __name__ == '__main__':
     parser.add_argument('--half', action='store_true', help='half precision FP16 inference')
     parser.add_argument('--device', default='', help='device id (i.e. 0 or 0,1) or cpu')
     parser.add_argument('--view-img', action='store_true', help='display results')
-    parser.add_argument('--save-txt', action='store_true', help='save results to *.txt', default="../data/output")
+    parser.add_argument('--save-txt', action='store_true', help='save results to *.txt', default="data/output")
     parser.add_argument('--classes', nargs='+', type=int, help='filter by class')
     parser.add_argument('--agnostic-nms', action='store_true', help='class-agnostic NMS')
     parser.add_argument('--augment', action='store_true', help='augmented inference')

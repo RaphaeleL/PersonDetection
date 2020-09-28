@@ -49,10 +49,10 @@ def create_label_data(classes_path, json_path, images_path, labels_path, images_
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--images_path', type=str, default='data/images/image_train/*.jpg')  
-    parser.add_argument('--annos_path', type=str, default='data/image_annos/train.json')
-    parser.add_argument('--class_names_path', type=str, default='data/classes.names', help='classes of the objects ')
-    parser.add_argument('--labels_path', type=str, default='data/lables')
+    parser.add_argument('--images_path', type=str, default='../data/images/image_train/*.jpg')  
+    parser.add_argument('--annos_path', type=str, default='../data/image_annos/train.json')
+    parser.add_argument('--class_names_path', type=str, default='../data/classes.names', help='classes of the objects ')
+    parser.add_argument('--labels_path', type=str, default='../data/lables')
     
     opt = parser.parse_args()
     
