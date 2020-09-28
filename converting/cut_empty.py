@@ -28,9 +28,10 @@ def delete_empty():
               os.remove(f);
               num_delete+=1
         
-    print("Finished! Found: ", num_delete, " empty labels")
+    print("Finished! Found: ", num_delete, " pictures")
+    print("Please rerun index.py!")
 
 
 if __name__ == '__main__':
-    print("Start delete pictures with empty labels")
+    print("Start delete train pictures with empty labels or no labels")
     delete_empty()
