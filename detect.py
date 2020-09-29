@@ -97,7 +97,7 @@ def write_results(det, save_txt, gn, path, save_path, save_img, view_img, im0, c
 
         if save_img or view_img:
             if int(cls) == 0:
-                label = '%s %.2f' % (names[int(cls)], conf)
+                label = '%s %.2f' % (names[int(cls)], conf*100)
                 plot_one_box(xyxy, im0, label=label, color=colors[int(cls)])
             else: 
                 continue
