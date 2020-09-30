@@ -10,8 +10,8 @@ from pathlib import Path
 from sys import platform
 
 import cv2
-import matplotlib
-import matplotlib.pyplot as plt
+#import matplotlib
+#import matplotlib.pyplot as plt
 import numpy as np
 import torch
 import torch.nn as nn
@@ -23,7 +23,7 @@ from . import torch_utils  # , google_utils
 # Set printoptions
 torch.set_printoptions(linewidth=320, precision=5, profile='long')
 np.set_printoptions(linewidth=320, formatter={'float_kind': '{:11.5g}'.format})  # format short g, %precision=5
-matplotlib.rc('font', **{'size': 11})
+#matplotlib.rc('font', **{'size': 11})
 
 # Prevent OpenCV from multithreading (to use PyTorch DataLoader)
 cv2.setNumThreads(0)
@@ -852,7 +852,7 @@ def plot_one_box(x, img, color=None, label=None, line_thickness=None):
         #cv2.rectangle(img, c1, c2, color, 1, cv2.LINE_AA)  # filled=
         cv2.putText(img, label+"%", (c1[0], c1[1] - 2), 0, tl / 3, color, thickness=tf, lineType=2)
 
-
+'''
 def plot_wh_methods():  # from utils.utils import *; plot_wh_methods()
     # Compares the two methods for width-height anchor multiplication
     # https://github.com/ultralytics/yolov3/issues/168
@@ -1022,7 +1022,7 @@ def plot_labels(labels):
     ax[2].set_ylabel('height')
     plt.savefig('labels.png', dpi=200)
 
-
+'''
 def plot_evolution_results(hyp):  # from utils.utils import *; plot_evolution_results(hyp)
     # Plot hyperparameter evolution results in evolve.txt
     x = np.loadtxt('evolve.txt', ndmin=2)
@@ -1040,7 +1040,7 @@ def plot_evolution_results(hyp):  # from utils.utils import *; plot_evolution_re
         plt.title('%s = %.3g' % (k, mu), fontdict={'size': 9})  # limit to 40 characters
         print('%15s: %.3g' % (k, mu))
     plt.savefig('evolve.png', dpi=200)
-
+'''
 
 def plot_results_overlay(start=0, stop=0):  # from utils.utils import *; plot_results_overlay()
     # Plot training results files 'results*.txt', overlaying train and val losses
@@ -1094,3 +1094,4 @@ def plot_results(start=0, stop=0, bucket='', id=()):  # from utils.utils import 
 
     ax[1].legend()
     fig.savefig('results.png', dpi=200)
+    '''
