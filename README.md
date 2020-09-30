@@ -55,12 +55,12 @@ Basic Docker Commands:
 
 **Build Container** To build the Docker Container from the Dockerfile (on the Jetson Nano) run the following Command.
 ```bash
-sudo docker build --no-cache . -t image_name_neu
+sudo docker build --no-cache . -t <image_name>
 ```
 
 **Run Container** To run the Docker Container from the Docker Image run the following Command.
 ```bash
-sudo docker run -it --rm --runtime nvidia --network host image_name_neu
+sudo docker run -it --rm --runtime nvidia --network host <image_name>
 ```
 
 ### Detection

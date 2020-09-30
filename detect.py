@@ -32,7 +32,7 @@ def second_stage_classifier(classify=False):
         modelc.to(device).eval()
     return classify
 
-def half_precision(device):
+def half_precision(model, device):
     half = device.type != 'cpu' 
     if half: model.half()
     return half
@@ -130,7 +130,7 @@ def detect(save_img=False):
     classify = second_stage_classifier(False)
     model.to(device).eval()
     export_mode(model, imgsz)
-    half = half_precision(device)
+    half = half_precision(model, device)
     dataset, save_img = set_dataloader(source, imgsz)
     names, colors = get_bbox_data()
     
@@ -142,7 +142,7 @@ def detect(save_img=False):
         fps_count_g.append(time_needed)
         if half: pred = pred.float()
         pred = non_max_suppression(pred, opt.conf_thres, opt.iou_thres, multi_label=False, classes=opt.classes, agnostic=opt.agnostic_nms)
-        if classify: pred = apply_classifier(pred, modelc, img, im0s)
+        if classify: pred = apply_classifier(pred, model, img, im0s)
         for i, det in enumerate(pred): 
             p, s, im0 = path, '', im0s
             save_path = str(Path(out) / Path(p).name)
