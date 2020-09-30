@@ -832,12 +832,12 @@ def get_avg_conf(conf):
     return new_conf
 
 # Plotting functions ---------------------------------------------------------------------------------------------------
-def plot_data(img, fps, conf):
-    image = cv2.imread("data/output/" + img.split("/")[-1])
+def plot_data(img, fps, conf, output_folder):
+    image = cv2.imread(output_folder +  os.sep + img.split(os.sep)[-1])
     tl = round(0.002 * (image.shape[0] + image.shape[1]) / 2) + 1
     tf = max(tl - 1, 1)
     cv2.putText(image, get_avg_fps(fps) + " FPS, " + get_avg_conf(conf), (20, 50), 0, tl / 3, [0, 0, 0], thickness=tf)
-    cv2.imwrite("data/output/" + img.split("/")[-1], image)
+    cv2.imwrite(output_folder +  os.sep + img.split(os.sep)[-1], image)
 
 def plot_one_box(x, img, color=None, label=None, line_thickness=None):
     # Plots one bounding box on image img

@@ -152,7 +152,7 @@ def detect(save_img=False):
                 print_results(det, names)
                 write_results(det, save_txt, torch.tensor(im0.shape)[[1, 0, 1, 0]], path, save_path, save_img, view_img, im0, colors, names)
             save_results(save_img, dataset, save_path, im0, vid_cap)
-        plot_data(path, fps_count_g, conf_list)
+        plot_data(path, fps_count_g, conf_list, opt.output)
         
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
