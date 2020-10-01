@@ -1,4 +1,4 @@
-# Person Detection with YoloV3 and YoloV3-Tiny for the IW276 Autonome Systeme Labor
+# Person Detection with YoloV3(-Tiny) and PyTorch for the IW276 Autonome Systeme Labor
 
 This Code is an YoloV3 Person Detection in PyTorch. It works on every common OS.
 
