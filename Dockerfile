@@ -20,7 +20,7 @@ RUN apt-get install python3-opencv -y
 # Large Files
 WORKDIR weights/
 RUN wget "https://www.dropbox.com/s/nzmibytp2hmv666/yolov3_tiny_best.pt"
-RUN wget "https://www.dropbox.com/s/jdhx0ivslj9zlxd/yolov3_best.pt"
+RUN wget "https://www.dropbox.com/s/paw2ab6aso9082g/yolov3_best.pt"
 RUN wget "https://www.dropbox.com/s/kb79bx1utukho7s/yolov3_last.pt"
 
 WORKDIR ../data/images/valid/
